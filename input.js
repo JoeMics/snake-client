@@ -24,14 +24,14 @@ const handleUserInput = (key) => {
 
   // arrow keys in unicode take from this page: https://stackoverflow.com/questions/17470554/how-to-capture-the-arrow-keys-in-node-js
   const controls = {
-    '\u001b[A': 'up',
-    '\u001b[B': 'down',
-    '\u001b[C': 'right',
-    '\u001b[D': 'left',
+    'w': 'up',
+    's': 'down',
+    'd': 'right',
+    'a': 'left',
   };
 
   const messages = {
-    '\u0066': 'pog', // lowercase F
+    'f': 'pog',
   };
   
   if (controls[key]) {
@@ -39,7 +39,6 @@ const handleUserInput = (key) => {
   }
 
   if (messages[key]) {
-    console.log('pressed F');
     connection.write(`Say: ${messages[key]}`);
   }
 };
