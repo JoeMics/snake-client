@@ -1,4 +1,9 @@
-const setupInput = () => {
+// stores the active TCP connection object
+let connection;
+
+const setupInput = (conn) => {
+  connection = conn;
+
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding('utf8');
@@ -16,6 +21,16 @@ const handleUserInput = (key) => {
   if (key === '\u0003') {
     process.exit();
   }
+
+  // arrow keys in unicode take from this page: https://stackoverflow.com/questions/17470554/how-to-capture-the-arrow-keys-in-node-js
+  const controls = {
+    '\u001b[A': 'up',
+    '\u001b[B': 'down',
+    '\u001b[C': 'right',
+    '\u001b[D': 'left',
+  };
+  
+  connection.write(`Move: ${controls[key]}`);
 };
 
 module.exports = { setupInput };
