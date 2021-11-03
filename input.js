@@ -29,8 +29,19 @@ const handleUserInput = (key) => {
     '\u001b[C': 'right',
     '\u001b[D': 'left',
   };
+
+  const messages = {
+    '\u0066': 'pog', // lowercase F
+  };
   
-  connection.write(`Move: ${controls[key]}`);
+  if (controls[key]) {
+    connection.write(`Move: ${controls[key]}`);
+  }
+
+  if (messages[key]) {
+    console.log('pressed F');
+    connection.write(`Say: ${messages[key]}`);
+  }
 };
 
 module.exports = { setupInput };
