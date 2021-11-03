@@ -16,7 +16,12 @@ const connect = () => {
 
     // send a string upon connection
     conn.write('Name: JOE');
-  });
+
+    // move up on connect
+  //   setInterval(() => {
+  //     conn.write('Move: up');
+  //   }, 50);
+  // });
 
   // logs data comming from the server when it sends it
   conn.on('data', (data) => {
