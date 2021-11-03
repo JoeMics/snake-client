@@ -1,3 +1,5 @@
+const { messages, controls } = require('./constants');
+
 // stores the active TCP connection object
 let connection;
 
@@ -22,18 +24,6 @@ const handleUserInput = (key) => {
     process.exit();
   }
 
-  // arrow keys in unicode take from this page: https://stackoverflow.com/questions/17470554/how-to-capture-the-arrow-keys-in-node-js
-  const controls = {
-    'w': 'up',
-    's': 'down',
-    'd': 'right',
-    'a': 'left',
-  };
-
-  const messages = {
-    'f': 'pog',
-  };
-  
   if (controls[key]) {
     connection.write(`Move: ${controls[key]}`);
   }
